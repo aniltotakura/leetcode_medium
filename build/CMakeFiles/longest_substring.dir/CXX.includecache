@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/anil/Thesis/repos/leetcode/leetcode_medium/include/include.h
+stdio.h
+-
+iostream
+-
+vector
+-
+bits/stdc++.h
+-
+algorithm
+-
+unordered_map
+-
+string.h
+-
+deque
+-
+queue
+-
+set
+-
+
+/home/anil/Thesis/repos/leetcode/leetcode_medium/longest_substring.cpp
+TwoSumConfig.h
+/home/anil/Thesis/repos/leetcode/leetcode_medium/TwoSumConfig.h
+include.h
+/home/anil/Thesis/repos/leetcode/leetcode_medium/include.h
+
+TwoSumConfig.h
+

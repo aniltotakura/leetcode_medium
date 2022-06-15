@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=gnu++17   CMakeFiles/longest_substring.dir/longest_substring.cpp.o  -o longest_substring 

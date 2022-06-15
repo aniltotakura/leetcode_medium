@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=gnu++17   CMakeFiles/find_substring.dir/find_substring.cpp.o  -o find_substring 
