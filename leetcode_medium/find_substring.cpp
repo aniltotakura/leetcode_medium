@@ -3,39 +3,45 @@
 #   include "include.h"
 #endif
 
+
 using namespace std;
 class Solution {
 public:
     vector<int> findSubstring(string s, vector<string>& words) {
         int sub_string_length = words.size();
         int word_length = words.at(0).size();
-        string sub_string;
-        set<string> set_string;
+        int count = 0;
+        int first_index = 0;
+        unordered_map<deque<char>, int, container_hash<deque<char>>>::iterator it;
+        deque<char> sub_string;
         vector<int> indices;
-
-        for (int i = 0; i < s.size(); i = i + word_length) {
-            sub_string = s.substr(i, word_length );
-            cout<< "sub_string is " << sub_string << "  i: " << i << "  word_length: " << word_length <<endl;
+        unordered_map<deque<char>, int, container_hash<deque<char>> > map = {};
+ 
+        for (int i = 0; i < s.size(); i++) {
+            if (sub_string.size() == word_length) {
+                sub_string.pop_front();
+                sub_string.push_back(s.at(i));
+            }
+            else sub_string.push_back(s.at(i));
+            this_thread::sleep_for(chrono::milliseconds(100));
             for (int j = 0; j < words.size(); j++) {
                 if (sub_string == words[j]){
-                    if (set_string.insert(sub_string).second == true) {
-                        if (set_string.size() == sub_string_length) {
-                            indices.push_back(i - (word_length -1) * sub_string_length);
-                            cout<<set_string;
-                            set_string.clear();
-                            cout<<"set stirng clear in result\n";
+                    map.insert_or_assign(sub_string, i - (word_length -1));
+                    cout<<map;
+                    if (map.size() == sub_string_length) {
+                        count = 0;
+                        first_index = map.begin()->second;
+                        for ( it = map.begin(); it != map.end(); it++ ) {
+                                if (first_index > it->second) first_index = it->second;
+                                count = count + it->second;
                         }
-                        cout<<set_string;
-                    }
-                    else {
-                        set_string.clear();
-                        cout<<"set stirng clear in else\n";
-                        set_string.insert(sub_string);
-                        cout<<set_string;
+                        cout << "first_index: " << first_index<< " sub_string_length: " << sub_string_length<< " word_length: "<< word_length << "\n";
+                        cout<< "count: "<< count << " calc: "<<( sub_string_length/2.0) * ((2*first_index) + ((sub_string_length -1) * word_length)) << " \n";
+                        if (count  == ( sub_string_length/2.0) * ((2*first_index) + ((sub_string_length -1) * word_length)) )
+                            indices.push_back((i+1) - word_length * sub_string_length);
                     }
                 }
             }
-            
         }
 
         return indices; 
@@ -45,6 +51,7 @@ public:
 int main()
 {
     Solution solution;
+    //          012345678901234567890123456
     string s = "barfoofoobarthefoobarman";
     vector<string> indices{"bar","foo","the"};
     cout<<solution.findSubstring(s, indices);
