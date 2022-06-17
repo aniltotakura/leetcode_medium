@@ -12,10 +12,10 @@ public:
         int word_length = words.at(0).size();
         int count = 0;
         int first_index = 0;
-        unordered_map<deque<char>, int, container_hash<deque<char>>>::iterator it;
+        map<deque<char>, int>::iterator it;
         deque<char> sub_string;
         vector<int> indices;
-        unordered_map<deque<char>, int, container_hash<deque<char>> > map = {};
+        map<deque<char>, int > map = {};
  
         for (int i = 0; i < s.size(); i++) {
             if (sub_string.size() == word_length) {
@@ -52,7 +52,7 @@ int main()
 {
     Solution solution;
     //          012345678901234567890123456
-    string s = "barfoofoobarthefoobarman";
-    vector<string> indices{"bar","foo","the"};
+    string s = "wordgoodgoodgoodbestword";
+    vector<string> indices{"word","good","best","good"};
     cout<<solution.findSubstring(s, indices);
 }

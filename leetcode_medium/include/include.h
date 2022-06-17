@@ -62,6 +62,18 @@ std::ostream& operator<<( std::ostream& os, const std::unordered_map<T_0, T_1>& 
     }
 }
 
+template <typename T_0, typename T_1> 
+std::ostream& operator<<( std::ostream& os, const std::map<T_0, T_1>& m){
+    std::cout<<std::endl<<std::endl;
+    if (m.size() > 0){
+        for (const auto& [first, second] : m){
+            std::cout<<"|    "<<first;
+            std::cout<<" "<<second<<"    |";
+            std::cout<<std::endl;
+        }
+    }
+}
+
 
 template <typename T_0> 
 std::ostream& operator<<( std::ostream& os, const std::deque<T_0>& m){
