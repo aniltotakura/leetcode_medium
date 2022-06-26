@@ -13,8 +13,10 @@ public:
             auto it = hash.find(s[j]);
             if (it != hash.end()) {
                 i = std::max(hash.find(s[j])->second, i);
+                cout<<"i: "<< i;
             }
             max = std::max( max, j - i + 1);
+            cout <<"max: "<< max << " J: "<< j<< "\n";
             hash.insert_or_assign(s[j], j + 1);
             cout<<hash;
         }
@@ -27,5 +29,7 @@ int main()
 {
     Solution solution;
     string s = "abcabcabcabc";
+    auto start = chrono::high_resolution_clock::now();
     cout<<solution.lengthOfLongestSubstring(s);
+    cout << "time taken: "<< chrono::duration_cast<chrono::microseconds>(chrono::high_resolution_clock::now() - start).count()<<" ms\n";
 }

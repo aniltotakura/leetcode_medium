@@ -68,18 +68,6 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -92,16 +80,15 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
 
-.PHONY : edit_cache/fast
+.PHONY : list_install_components/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -114,15 +101,28 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-.PHONY : list_install_components/fast
+.PHONY : edit_cache/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -157,19 +157,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named longest_substring
-
-# Build rule for target.
-longest_substring: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 longest_substring
-.PHONY : longest_substring
-
-# fast build rule for target.
-longest_substring/fast:
-	$(MAKE) -f CMakeFiles/longest_substring.dir/build.make CMakeFiles/longest_substring.dir/build
-.PHONY : longest_substring/fast
-
-#=============================================================================
 # Target rules for targets named two_sum
 
 # Build rule for target.
@@ -183,6 +170,45 @@ two_sum/fast:
 .PHONY : two_sum/fast
 
 #=============================================================================
+# Target rules for targets named longest_substring
+
+# Build rule for target.
+longest_substring: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 longest_substring
+.PHONY : longest_substring
+
+# fast build rule for target.
+longest_substring/fast:
+	$(MAKE) -f CMakeFiles/longest_substring.dir/build.make CMakeFiles/longest_substring.dir/build
+.PHONY : longest_substring/fast
+
+#=============================================================================
+# Target rules for targets named string_concat
+
+# Build rule for target.
+string_concat: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 string_concat
+.PHONY : string_concat
+
+# fast build rule for target.
+string_concat/fast:
+	$(MAKE) -f CMakeFiles/string_concat.dir/build.make CMakeFiles/string_concat.dir/build
+.PHONY : string_concat/fast
+
+#=============================================================================
+# Target rules for targets named Add_two_Numbers_linked_list
+
+# Build rule for target.
+Add_two_Numbers_linked_list: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Add_two_Numbers_linked_list
+.PHONY : Add_two_Numbers_linked_list
+
+# fast build rule for target.
+Add_two_Numbers_linked_list/fast:
+	$(MAKE) -f CMakeFiles/Add_two_Numbers_linked_list.dir/build.make CMakeFiles/Add_two_Numbers_linked_list.dir/build
+.PHONY : Add_two_Numbers_linked_list/fast
+
+#=============================================================================
 # Target rules for targets named find_substring
 
 # Build rule for target.
@@ -194,6 +220,46 @@ find_substring: cmake_check_build_system
 find_substring/fast:
 	$(MAKE) -f CMakeFiles/find_substring.dir/build.make CMakeFiles/find_substring.dir/build
 .PHONY : find_substring/fast
+
+#=============================================================================
+# Target rules for targets named video_flip
+
+# Build rule for target.
+video_flip: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 video_flip
+.PHONY : video_flip
+
+# fast build rule for target.
+video_flip/fast:
+	$(MAKE) -f CMakeFiles/video_flip.dir/build.make CMakeFiles/video_flip.dir/build
+.PHONY : video_flip/fast
+
+Add_two_Numbers_linked_list.o: Add_two_Numbers_linked_list.cpp.o
+
+.PHONY : Add_two_Numbers_linked_list.o
+
+# target to build an object file
+Add_two_Numbers_linked_list.cpp.o:
+	$(MAKE) -f CMakeFiles/Add_two_Numbers_linked_list.dir/build.make CMakeFiles/Add_two_Numbers_linked_list.dir/Add_two_Numbers_linked_list.cpp.o
+.PHONY : Add_two_Numbers_linked_list.cpp.o
+
+Add_two_Numbers_linked_list.i: Add_two_Numbers_linked_list.cpp.i
+
+.PHONY : Add_two_Numbers_linked_list.i
+
+# target to preprocess a source file
+Add_two_Numbers_linked_list.cpp.i:
+	$(MAKE) -f CMakeFiles/Add_two_Numbers_linked_list.dir/build.make CMakeFiles/Add_two_Numbers_linked_list.dir/Add_two_Numbers_linked_list.cpp.i
+.PHONY : Add_two_Numbers_linked_list.cpp.i
+
+Add_two_Numbers_linked_list.s: Add_two_Numbers_linked_list.cpp.s
+
+.PHONY : Add_two_Numbers_linked_list.s
+
+# target to generate assembly for a file
+Add_two_Numbers_linked_list.cpp.s:
+	$(MAKE) -f CMakeFiles/Add_two_Numbers_linked_list.dir/build.make CMakeFiles/Add_two_Numbers_linked_list.dir/Add_two_Numbers_linked_list.cpp.s
+.PHONY : Add_two_Numbers_linked_list.cpp.s
 
 find_substring.o: find_substring.cpp.o
 
@@ -249,6 +315,33 @@ longest_substring.cpp.s:
 	$(MAKE) -f CMakeFiles/longest_substring.dir/build.make CMakeFiles/longest_substring.dir/longest_substring.cpp.s
 .PHONY : longest_substring.cpp.s
 
+string_concat.o: string_concat.cpp.o
+
+.PHONY : string_concat.o
+
+# target to build an object file
+string_concat.cpp.o:
+	$(MAKE) -f CMakeFiles/string_concat.dir/build.make CMakeFiles/string_concat.dir/string_concat.cpp.o
+.PHONY : string_concat.cpp.o
+
+string_concat.i: string_concat.cpp.i
+
+.PHONY : string_concat.i
+
+# target to preprocess a source file
+string_concat.cpp.i:
+	$(MAKE) -f CMakeFiles/string_concat.dir/build.make CMakeFiles/string_concat.dir/string_concat.cpp.i
+.PHONY : string_concat.cpp.i
+
+string_concat.s: string_concat.cpp.s
+
+.PHONY : string_concat.s
+
+# target to generate assembly for a file
+string_concat.cpp.s:
+	$(MAKE) -f CMakeFiles/string_concat.dir/build.make CMakeFiles/string_concat.dir/string_concat.cpp.s
+.PHONY : string_concat.cpp.s
+
 two_sum.o: two_sum.cpp.o
 
 .PHONY : two_sum.o
@@ -276,6 +369,33 @@ two_sum.cpp.s:
 	$(MAKE) -f CMakeFiles/two_sum.dir/build.make CMakeFiles/two_sum.dir/two_sum.cpp.s
 .PHONY : two_sum.cpp.s
 
+video_flip.o: video_flip.cpp.o
+
+.PHONY : video_flip.o
+
+# target to build an object file
+video_flip.cpp.o:
+	$(MAKE) -f CMakeFiles/video_flip.dir/build.make CMakeFiles/video_flip.dir/video_flip.cpp.o
+.PHONY : video_flip.cpp.o
+
+video_flip.i: video_flip.cpp.i
+
+.PHONY : video_flip.i
+
+# target to preprocess a source file
+video_flip.cpp.i:
+	$(MAKE) -f CMakeFiles/video_flip.dir/build.make CMakeFiles/video_flip.dir/video_flip.cpp.i
+.PHONY : video_flip.cpp.i
+
+video_flip.s: video_flip.cpp.s
+
+.PHONY : video_flip.s
+
+# target to generate assembly for a file
+video_flip.cpp.s:
+	$(MAKE) -f CMakeFiles/video_flip.dir/build.make CMakeFiles/video_flip.dir/video_flip.cpp.s
+.PHONY : video_flip.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -283,23 +403,35 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install/local"
 	@echo "... install"
-	@echo "... longest_substring"
-	@echo "... two_sum"
-	@echo "... edit_cache"
-	@echo "... find_substring"
-	@echo "... rebuild_cache"
 	@echo "... list_install_components"
+	@echo "... rebuild_cache"
+	@echo "... edit_cache"
+	@echo "... two_sum"
+	@echo "... longest_substring"
+	@echo "... string_concat"
+	@echo "... install/local"
+	@echo "... Add_two_Numbers_linked_list"
+	@echo "... find_substring"
+	@echo "... video_flip"
+	@echo "... Add_two_Numbers_linked_list.o"
+	@echo "... Add_two_Numbers_linked_list.i"
+	@echo "... Add_two_Numbers_linked_list.s"
 	@echo "... find_substring.o"
 	@echo "... find_substring.i"
 	@echo "... find_substring.s"
 	@echo "... longest_substring.o"
 	@echo "... longest_substring.i"
 	@echo "... longest_substring.s"
+	@echo "... string_concat.o"
+	@echo "... string_concat.i"
+	@echo "... string_concat.s"
 	@echo "... two_sum.o"
 	@echo "... two_sum.i"
 	@echo "... two_sum.s"
+	@echo "... video_flip.o"
+	@echo "... video_flip.i"
+	@echo "... video_flip.s"
 .PHONY : help
 
 

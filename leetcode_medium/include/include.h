@@ -12,6 +12,7 @@
 #include <thread>
 #include <boost/functional/hash.hpp>
 #include <cstdlib>
+#include <chrono>
 
 
 template <typename T, typename = void>
@@ -140,4 +141,9 @@ std::ostream& operator<<( std::ostream& os, const std::unordered_map< T_0, T_1, 
             std::cout<<std::endl;
         }
     }
+}
+
+template < typename T_0, typename T_1> 
+std::ostream& operator<<( std::ostream&os, const std::pair <T_0, T_1>& p) {
+    std::cout <<"[ " << p.first << " " << p.second<<" ]";
 }
